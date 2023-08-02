@@ -16,7 +16,7 @@ trait Favoriter
 {
     public function favorite(Model $object): void
     {
-        /* @var \Overtrue\LaravelFavorite\Traits\Favoriteable|Model $object */
+        /* @var \Animelhd\AnimesView\Traits\Favoriteable|Model $object */
         if (! $this->hasFavorited($object)) {
             $favorite = app(config('animesfavorite.favorite_model'));
             $favorite->{config('animesfavorite.user_foreign_key')} = $this->getKey();
@@ -27,7 +27,7 @@ trait Favoriter
 
     public function unfavorite(Model $object): void
     {
-        /* @var \Overtrue\LaravelFavorite\Traits\Favoriteable $object */
+        /* @var \Animelhd\AnimesView\Traits\Favoriteable $object */
         $relation = $object->favorites()
             ->where('favoriteable_id', $object->getKey())
             ->where('favoriteable_type', $object->getMorphClass())
